@@ -5,6 +5,7 @@ import sqlite3
 import numpy as np
 import json
 import requests
+import openpyxl
 
 # Configuración de la página
 st.set_page_config(   
