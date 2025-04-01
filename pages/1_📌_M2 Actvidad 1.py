@@ -138,3 +138,22 @@ df_personas = pd.DataFrame({"Nombre": nombres, "Edad": edades, "Ciudad": ciudade
 st.dataframe(df_personas)
 """
 st.code(code, language='python')
+
+
+
+
+
+st.header("DataFrame desde CSV")
+
+df_csv = pd.read_csv("/pages/data.csv", sep=";")
+st.dataframe(df_csv)
+
+
+st.header("Solución")
+code="""
+"Se crea un archivo con el nombre data.csv y se pone en la carpeta raiz de los archivos .py que estas manipulando
+"
+df_csv = pd.read_csv("data.csv")
+st.dataframe(df_csv)
+"""
+st.code(code, language='python')
