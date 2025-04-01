@@ -46,7 +46,7 @@ df_libros = pd.DataFrame(libros)
 st.dataframe(df_libros)
 
 
-st.header("Diccionario")
+st.header("Solución")
 code="""
 st.header("DataFrame desde Diccionario")
 
@@ -62,4 +62,32 @@ st.dataframe(df_libros)"
 """
 st.code(code, language='python')
 
+
+st.header("DataFrame desde Lista de Diccionarios")
+
+ciudades = [
+    {"nombre": "Tokio", "población": 13929286, "país": "Japón"},
+    {"nombre": "Delhi", "población": 11007835, "país": "India"},
+    {"nombre": "Shanghái", "población": 26317104, "país": "China"},
+    {"nombre": "Ciudad de México", "población": 8851080, "país": "México"}
+]
+
+df_ciudades = pd.DataFrame(ciudades)
+st.dataframe(df_ciudades)
+
+st.header("Solución")
+code="""
+st.header("DataFrame desde Lista de Diccionarios")
+
+ciudades = [
+    {"nombre": "Tokio", "población": 13929286, "país": "Japón"},
+    {"nombre": "Delhi", "población": 11007835, "país": "India"},
+    {"nombre": "Shanghái", "población": 26317104, "país": "China"},
+    {"nombre": "Ciudad de México", "población": 8851080, "país": "México"}
+]
+
+df_ciudades = pd.DataFrame(ciudades)
+st.dataframe(df_ciudades)
+"""
+st.code(code, language='python')
 
