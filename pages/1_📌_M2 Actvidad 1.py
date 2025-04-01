@@ -153,7 +153,13 @@ st.header("Solución")
 code="""
 "Se crea un archivo con el nombre data.csv y se pone en la carpeta raiz de los archivos .py que estas manipulando
 "
-df_csv = pd.read_csv("data.csv")
+df_csv = pd.read_csv("pages/data.csv")
 st.dataframe(df_csv)
 """
 st.code(code, language='python')
+
+
+st.header("DataFrame desde Excel")
+
+df_excel = pd.read_excel("pages/data.xlsx")
+st.dataframe(df_excel)
