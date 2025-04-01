@@ -217,3 +217,33 @@ st.code(code, language='python')
 
 
 
+
+
+st.header("DataFrame desde SQLite")
+
+conn = sqlite3.connect("estudiantes.db")
+cursor = conn.cursor()
+cursor.execute("CREATE TABLE IF NOT EXISTS estudiantes (nombre TEXT, calificacion INTEGER)")
+cursor.execute("INSERT INTO estudiantes VALUES ('Ana', 90), ('Juan', 85), ('María', 95)")
+conn.commit()
+
+df_sqlite = pd.read_sql_query("SELECT * FROM estudiantes", conn)
+st.dataframe(df_sqlite)
+
+conn.close()
+
+
+st.header("Solución")
+code="""
+conn = sqlite3.connect("estudiantes.db")
+cursor = conn.cursor()
+cursor.execute("CREATE TABLE IF NOT EXISTS estudiantes (nombre TEXT, calificacion INTEGER)")
+cursor.execute("INSERT INTO estudiantes VALUES ('Ana', 90), ('Juan', 85), ('María', 95)")
+conn.commit()
+
+df_sqlite = pd.read_sql_query("SELECT * FROM estudiantes", conn)
+st.dataframe(df_sqlite)
+
+conn.close()
+"""
+st.code(code, language='python')
