@@ -159,7 +159,18 @@ st.dataframe(df_csv)
 st.code(code, language='python')
 
 
+
+
 st.header("DataFrame desde Excel")
 
 df_excel = pd.read_excel("pages/data.xlsx")
 st.dataframe(df_excel)
+
+st.header("Solución")
+code="""
+Se crea el archivo data.xlsx y se llama con df.excel = pd.read_excel("RUTA DONDE TIENES EL ARCHIVO")
+
+df_excel = pd.read_excel("data.xlsx")
+st.dataframe(df_excel)
+"""
+st.code(code, language='python')
