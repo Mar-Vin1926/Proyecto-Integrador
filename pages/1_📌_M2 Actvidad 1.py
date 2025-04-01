@@ -197,3 +197,23 @@ st.dataframe(df_json)
 
 """
 st.code(code, language='python')
+
+
+
+
+st.header("DataFrame desde URL")
+
+url = "https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv"  # URL real de un archivo CSV
+df_url = pd.read_csv(url)
+st.dataframe(df_url)
+
+st.header("Solución")
+code="""
+url = "https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv"  # URL real de un archivo CSV
+df_url = pd.read_csv(url)
+st.dataframe(df_url)
+"""
+st.code(code, language='python')
+
+
+
