@@ -145,7 +145,7 @@ st.code(code, language='python')
 
 st.header("DataFrame desde CSV")
 
-df_csv = pd.read_csv("/pages/data.csv", sep=";")
+df_csv = pd.read_csv("/pages/data.csv")
 st.dataframe(df_csv)
 
 
