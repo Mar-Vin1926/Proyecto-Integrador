@@ -46,8 +46,9 @@ df_libros = pd.DataFrame(libros)
 st.dataframe(df_libros)
 
 
-st.header("Diccionario"
-"""st.header("DataFrame desde Diccionario")
+st.header("Diccionario")
+code="""
+st.header("DataFrame desde Diccionario")
 
 libros = {
     "título": ["Cien años de soledad", "1984", "El señor de los anillos", "Orgullo y prejuicio"],
@@ -58,6 +59,7 @@ libros = {
 
 df_libros = pd.DataFrame(libros)
 st.dataframe(df_libros)"
-""")
+"""
+st.code(code, language='python')
 
 
