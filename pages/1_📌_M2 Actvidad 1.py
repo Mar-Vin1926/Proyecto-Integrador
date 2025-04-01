@@ -168,6 +168,7 @@ st.dataframe(df_excel)
 
 st.header("Solución")
 code="""
+se instala, la libreria para manipular excel "openpyxl" con pip install openpyxl.
 Se crea el archivo data.xlsx y se llama con df.excel = pd.read_excel("RUTA DONDE TIENES EL ARCHIVO")
 
 df_excel = pd.read_excel("data.xlsx")
