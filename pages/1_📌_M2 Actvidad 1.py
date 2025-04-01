@@ -117,3 +117,24 @@ df_productos = pd.DataFrame(productos, columns=["Producto", "Precio", "Stock"])
 st.dataframe(df_productos)
 """
 st.code(code, language='python')
+
+
+st.header("DataFrame desde Series")
+
+nombres = pd.Series(["Ana", "Juan", "María", "Pedro"])
+edades = pd.Series([25, 30, 28, 35])
+ciudades = pd.Series(["Madrid", "Barcelona", "Valencia", "Sevilla"])
+
+df_personas = pd.DataFrame({"Nombre": nombres, "Edad": edades, "Ciudad": ciudades})
+st.dataframe(df_personas)
+
+st.header("Solución")
+code="""
+nombres = pd.Series(["Ana", "Juan", "María", "Pedro"])
+edades = pd.Series([25, 30, 28, 35])
+ciudades = pd.Series(["Madrid", "Barcelona", "Valencia", "Sevilla"])
+
+df_personas = pd.DataFrame({"Nombre": nombres, "Edad": edades, "Ciudad": ciudades})
+st.dataframe(df_personas)
+"""
+st.code(code, language='python')
