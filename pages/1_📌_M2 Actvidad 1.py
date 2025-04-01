@@ -121,18 +121,18 @@ st.code(code, language='python')
 
 st.header("DataFrame desde Series")
 
-nombres = pd.Series(["Ana", "Juan", "María", "Pedro"])
-edades = pd.Series([25, 30, 28, 35])
-ciudades = pd.Series(["Madrid", "Barcelona", "Valencia", "Sevilla"])
+nombres = pd.Series(["Paola", "Marvin", "Kevin", "Pedro"])
+edades = pd.Series([18, 32, 32, 35])
+ciudades = pd.Series(["Bello", "Envigado", "La guajira", "Sevilla"])
 
 df_personas = pd.DataFrame({"Nombre": nombres, "Edad": edades, "Ciudad": ciudades})
 st.dataframe(df_personas)
 
 st.header("Solución")
 code="""
-nombres = pd.Series(["Ana", "Juan", "María", "Pedro"])
-edades = pd.Series([25, 30, 28, 35])
-ciudades = pd.Series(["Madrid", "Barcelona", "Valencia", "Sevilla"])
+nombres = pd.Series(["Paola", "Marvin", "Kevin", "Pedro"])
+edades = pd.Series([18, 32, 32, 35])
+ciudades = pd.Series(["Bello", "Envigado", "La guajira", "Sevilla"])
 
 df_personas = pd.DataFrame({"Nombre": nombres, "Edad": edades, "Ciudad": ciudades})
 st.dataframe(df_personas)
