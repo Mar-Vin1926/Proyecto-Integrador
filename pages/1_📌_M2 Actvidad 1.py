@@ -46,5 +46,18 @@ df_libros = pd.DataFrame(libros)
 st.dataframe(df_libros)
 
 
-st.header("Solución")
+st.header("Diccionario"
+#st.header("DataFrame desde Diccionario")
+
+#libros = {
+#    "título": ["Cien años de soledad", "1984", "El señor de los anillos", "Orgullo y prejuicio"],
+#   "autor": ["Gabriel García Márquez", "George Orwell", "J.R.R. Tolkien", "Jane Austen"],
+#    "año de publicación": [1967, 1949, 1954, 1813],
+#    "género": ["Realismo mágico", "Ciencia ficción", "Fantasía", "Romance"]}"
+
+
+#df_libros = pd.DataFrame(libros)
+#st.dataframe(df_libros)"
+)
+
 
