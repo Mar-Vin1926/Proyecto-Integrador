@@ -247,3 +247,24 @@ st.dataframe(df_sqlite)
 conn.close()
 """
 st.code(code, language='python')
+
+
+
+
+
+
+st.header("DataFrame desde NumPy")
+
+array_np = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+df_numpy = pd.DataFrame(array_np, columns=["Columna 1", "Columna 2", "Columna 3"])
+st.dataframe(df_numpy)
+
+st.header("Solución")
+code="""
+st.header("DataFrame desde NumPy")
+
+array_np = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+df_numpy = pd.DataFrame(array_np, columns=["Columna 1", "Columna 2", "Columna 3"])
+st.dataframe(df_numpy)
+"""
+st.code(code, language='python')
