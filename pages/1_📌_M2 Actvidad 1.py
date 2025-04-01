@@ -176,3 +176,24 @@ df_excel = pd.read_excel("data.xlsx")
 st.dataframe(df_excel)
 """
 st.code(code, language='python')
+
+
+
+
+st.header("DataFrame desde JSON")
+
+df_json = pd.read_json("pages/data.json")
+st.dataframe(df_json)
+
+st.header("Solución")
+code="""
+Crea un archivo llamado data.json en la misma carpeta que tu script con el siguiente contenido:
+    {"nombre": "Usuario1", "correo": "usuario1@example.com"},
+    {"nombre": "Usuario2", "correo": "usuario2@example.com"},
+    {"nombre": "Usuario3", "correo": "usuario3@example.com"}
+
+df_json = pd.read_json("data.json")
+st.dataframe(df_json)
+
+"""
+st.code(code, language='python')
