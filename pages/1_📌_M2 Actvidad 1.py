@@ -25,10 +25,10 @@ st.markdown("""
 - Aplicar estos conocimientos en ejemplos prácticos
 """)
 
-st.header("DataFrame desde disccionarios")
+st.header("DataFrame desde diccionarios")
 
 libros = {
-    "título": ["Cien años de soledad", "1984", "El señor de los anillos", "Orgullo y prejuicio"],
+        "título": ["Cien años de soledad", "1984", "El señor de los anillos", "Orgullo y prejuicio"],
         "autor": ["Gabriel García Márquez", "George Orwell", "J.R.R. Tolkien", "Jane Austen"],
         "año de publicación": [1967, 1949, 1954, 1813],
         "género": ["Realismo mágico", "Ciencia ficción", "Fantasía", "Romance"]
