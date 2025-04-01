@@ -77,7 +77,6 @@ st.dataframe(df_ciudades)
 
 st.header("Solución")
 code="""
-st.header("DataFrame desde Lista de Diccionarios")
 
 ciudades = [
     {"nombre": "Tokio", "población": 13929286, "país": "Japón"},
@@ -91,3 +90,30 @@ st.dataframe(df_ciudades)
 """
 st.code(code, language='python')
 
+
+
+st.header("DataFrame desde Lista de Listas")
+
+productos = [
+    ["Laptop", 1200, 10],
+    ["Smartphone", 800, 20],
+    ["Tablet", 300, 15],
+    ["Auriculares", 100, 50]
+]
+
+df_productos = pd.DataFrame(productos, columns=["Producto", "Precio", "Stock"])
+st.dataframe(df_productos)
+
+st.header("Solución")
+code="""
+productos = [
+    ["Laptop", 1200, 10],
+    ["Smartphone", 800, 20],
+    ["Tablet", 300, 15],
+    ["Auriculares", 100, 50]
+]
+
+df_productos = pd.DataFrame(productos, columns=["Producto", "Precio", "Stock"])
+st.dataframe(df_productos)
+"""
+st.code(code, language='python')
