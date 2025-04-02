@@ -8,6 +8,7 @@ import openpyxl
 from firebase_admin import credentials, initialize_app, firestore
 import firebase_admin
 import json
+import toml
 
 # Configuración de la página
 st.set_page_config(   
@@ -275,11 +276,14 @@ st.code(code, language='python')
 
 st.header("FireBase")
 
-# Accede a las credenciales desde Streamlit Secrets (sin FIREBASE_CREDENTIALS = y llaves)
-cred_json = st.secrets
+# Accede a las credenciales desde Streamlit Secrets
+cred_toml = st.secrets
 
-# Crea un objeto credentials.Certificate a partir del JSON
-cred = credentials.Certificate(cred_json)
+# Convierte el contenido TOML a un diccionario de Python
+cred_dict = toml.loads(toml.dumps(cred_toml))
+
+# Crea un objeto credentials.Certificate a partir del diccionario
+cred = credentials.Certificate(cred_dict)
 
 # Inicializa la aplicación Firebase si aún no se ha inicializado
 if not firebase_admin._apps:
