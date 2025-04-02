@@ -276,7 +276,11 @@ st.code(code, language='python')
 
 st.header("FireBase")
 
-cred_toml = st.secrets["credentials"] #<--- Modificacion
+def attrdict_to_dict(attrdict):
+    """Convierte un objeto AttrDict a un diccionario Python estándar."""
+    return dict(attrdict)
+
+cred_toml = attrdict_to_dict(st.secrets["credentials"]) #<--- Modificacion
 cred_dict = toml.loads(toml.dumps(cred_toml))
 cred = credentials.Certificate(cred_dict)
 
