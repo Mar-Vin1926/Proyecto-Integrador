@@ -1,11 +1,13 @@
 import streamlit as st
-import streamlit as st
 import pandas as pd
 import sqlite3
 import numpy as np
 import json
 import requests
 import openpyxl
+from firebase_admin import credentials, initialize_app, firestore
+import firebase_admin
+import json
 
 # Configuración de la página
 st.set_page_config(   
@@ -268,3 +270,50 @@ df_numpy = pd.DataFrame(array_np, columns=["Columna 1", "Columna 2", "Columna 3"
 st.dataframe(df_numpy)
 """
 st.code(code, language='python')
+
+
+
+st.header("FireBase")
+
+# Accede a las credenciales desde Streamlit Secrets (sin FIREBASE_CREDENTIALS = y llaves)
+cred_json = st.secrets
+
+# Crea un objeto credentials.Certificate a partir del JSON
+cred = credentials.Certificate(cred_json)
+
+# Inicializa la aplicación Firebase si aún no se ha inicializado
+if not firebase_admin._apps:
+    firebase_admin.initialize_app(cred)
+
+# Inicializa el cliente de Firestore
+db = firestore.client()
+
+# Ejemplo: Lee datos de una colección llamada "usuarios"
+usuarios_ref = db.collection("usuarios")
+usuarios = usuarios_ref.stream()
+
+# Muestra los datos en la aplicación Streamlit
+st.title("Usuarios de Firestore")
+
+for usuario in usuarios:
+    usuario_dict = usuario.to_dict()
+    nombre = usuario_dict.get("nombre", "Nombre no disponible")
+    edad = usuario_dict.get("edad", "Edad no disponible")
+    st.write(f"ID: {usuario.id}, Nombre: {nombre}, Edad: {edad}")
+
+# Ejemplo: Agregar datos a Firestore
+st.header("Agregar Nuevo Usuario")
+
+nombre_nuevo = st.text_input("Nombre:")
+edad_nueva = st.number_input("Edad:", min_value=0, step=1)
+
+if st.button("Agregar Usuario"):
+    if nombre_nuevo and edad_nueva >= 0:
+        nuevo_usuario = {"nombre": nombre_nuevo, "edad": edad_nueva}
+        db.collection("usuarios").add(nuevo_usuario)
+        st.success("Usuario agregado correctamente.")
+    else:
+        st.warning("Por favor, ingresa un nombre y una edad válida.")
+
+# Puedes agregar más funcionalidades según las necesidades de tu proyecto
+# ...
