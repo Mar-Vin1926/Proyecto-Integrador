@@ -276,13 +276,8 @@ st.code(code, language='python')
 
 st.header("FireBase")
 
-# Accede a las credenciales desde Streamlit Secrets
-cred_toml = st.secrets
-
-# Convierte el contenido TOML a un diccionario de Python
+cred_toml = st.secrets["credentials"] #<--- Modificacion
 cred_dict = toml.loads(toml.dumps(cred_toml))
-
-# Crea un objeto credentials.Certificate a partir del diccionario
 cred = credentials.Certificate(cred_dict)
 
 # Inicializa la aplicación Firebase si aún no se ha inicializado
