@@ -439,32 +439,31 @@ st.header("Solución")
 
 code="""
 def attrdict_to_dict(attrdict):
-   
     return dict(attrdict)
 
-cred_toml = attrdict_to_dict(st.secrets["credentials"]) #<--- Modificacion
-cred_dict = toml.loads(toml.dumps(cred_toml))
-cred = credentials.Certificate(cred_dict)
-
-# Inicializa la aplicación Firebase si aún no se ha inicializado
 if not firebase_admin._apps:
+    cred_toml = attrdict_to_dict(st.secrets["credentials"])
+    cred_dict = toml.loads(toml.dumps(cred_toml))
+    cred = credentials.Certificate(cred_dict)
     firebase_admin.initialize_app(cred)
 
-# Inicializa el cliente de Firestore
 db = firestore.client()
-
-# Ejemplo: Lee datos de una colección llamada "usuarios"
 usuarios_ref = db.collection("usuarios")
 usuarios = usuarios_ref.stream()
+data = []
 
-# Muestra los datos en la aplicación Streamlit
 st.title("Usuarios de Firestore")
 
 for usuario in usuarios:
     usuario_dict = usuario.to_dict()
-    nombre = usuario_dict.get("nombre", "Nombre no disponible")
-    edad = usuario_dict.get("edad", "Edad no disponible")
-    st.write(f"ID: {usuario.id}, Nombre: {nombre}, Edad: {edad}")
+    if "nombre" in usuario_dict and "edad" in usuario_dict: # Example of data validation.
+        usuario_dict["ID"] = usuario.id
+        data.append(usuario_dict)
+
+df_firebase = pd.DataFrame(data)
+st.write("Datos desde Firebase")
+st.dataframe(df_firebase)
+
 
 # Ejemplo: Agregar datos a Firestore
 st.header("Agregar Nuevo Usuario")
