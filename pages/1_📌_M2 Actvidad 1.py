@@ -193,6 +193,21 @@ st.dataframe(df_personas)
 st.code(code, language='python')
 
 
+def descargar_excel(df, nombre_archivo):
+    """Genera un archivo Excel a partir de un DataFrame y crea un botón de descarga."""
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+        df.to_excel(writer, index=False, sheet_name='Sheet1')
+    processed_data = output.getvalue()
+    st.download_button(
+        label=f"Descargar {nombre_archivo}.xlsx",
+        data=processed_data,
+        file_name=f"{nombre_archivo}.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    )
+st.write("Datos de Personas")
+st.dataframe(df_personas)
+descargar_excel(df_personas, "Personas")
 
 
 
@@ -268,6 +283,22 @@ st.dataframe(df_url)
 st.code(code, language='python')
 
 
+def descargar_excel(df, nombre_archivo):
+    """Genera un archivo Excel a partir de un DataFrame y crea un botón de descarga."""
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+        df.to_excel(writer, index=False, sheet_name='Sheet1')
+    processed_data = output.getvalue()
+    st.download_button(
+        label=f"Descargar {nombre_archivo}.xlsx",
+        data=processed_data,
+        file_name=f"{nombre_archivo}.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    )
+st.write("Datos desde URL")
+descargar_excel(df_url, "Datos_URL")
+
+
 
 
 
@@ -283,6 +314,25 @@ df_sqlite = pd.read_sql_query("SELECT * FROM estudiantes", conn)
 st.dataframe(df_sqlite)
 
 conn.close()
+
+def descargar_excel(df, nombre_archivo):
+    """Genera un archivo Excel a partir de un DataFrame y crea un botón de descarga."""
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+        df.to_excel(writer, index=False, sheet_name='Sheet1')
+    processed_data = output.getvalue()
+    st.download_button(
+        label=f"Descargar {nombre_archivo}.xlsx",
+        data=processed_data,
+        file_name=f"{nombre_archivo}.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    )
+
+
+
+st.write("Datos desde SQLite")
+descargar_excel(df_sqlite, "Datos_SQLite")
+
 
 
 st.header("Solución")
@@ -310,6 +360,24 @@ st.header("DataFrame desde NumPy")
 array_np = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 df_numpy = pd.DataFrame(array_np, columns=["Columna 1", "Columna 2", "Columna 3"])
 st.dataframe(df_numpy)
+
+
+def descargar_excel(df, nombre_archivo):
+    """Genera un archivo Excel a partir de un DataFrame y crea un botón de descarga."""
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+        df.to_excel(writer, index=False, sheet_name='Sheet1')
+    processed_data = output.getvalue()
+    st.download_button(
+        label=f"Descargar {nombre_archivo}.xlsx",
+        data=processed_data,
+        file_name=f"{nombre_archivo}.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    )
+st.write("Datos desde NumPy")
+descargar_excel(df_numpy, "Datos_NumPy")
+
+
 
 st.header("Solución")
 code="""
@@ -366,6 +434,8 @@ if st.button("Agregar Usuario"):
         st.success("Usuario agregado correctamente.")
     else:
         st.warning("Por favor, ingresa un nombre y una edad válida.")
+
+
 
 st.header("Solución")
 
