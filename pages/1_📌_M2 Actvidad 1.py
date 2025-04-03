@@ -3,9 +3,6 @@ import streamlit as st
 import pandas as pd
 import sqlite3
 import numpy as np
-import json
-import requests
-import openpyxl
 from firebase_admin import credentials, initialize_app, firestore
 import firebase_admin
 import json
@@ -97,6 +94,26 @@ ciudades = [
 
 df_ciudades = pd.DataFrame(ciudades)
 st.dataframe(df_ciudades)
+
+
+
+def descargar_excel(df, nombre_archivo):
+    """Genera un archivo Excel a partir de un DataFrame y crea un botón de descarga."""
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+        df.to_excel(writer, index=False, sheet_name='Sheet1')
+    processed_data = output.getvalue()
+    st.download_button(
+        label=f"Descargar {nombre_archivo}.xlsx",
+        data=processed_data,
+        file_name=f"{nombre_archivo}.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    )
+
+    st.write("Datos de Ciudades")
+st.dataframe(df_ciudades)
+descargar_excel(df_ciudades, "Ciudades")
+
 
 st.header("Solución")
 code="""
