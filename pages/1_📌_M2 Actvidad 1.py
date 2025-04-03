@@ -391,33 +391,28 @@ st.code(code, language='python')
 
 
 
-st.header("FireBase")
-
 def attrdict_to_dict(attrdict):
     """Convierte un objeto AttrDict a un diccionario Python estándar."""
     return dict(attrdict)
 
 if not firebase_admin._apps:
-    cred_toml = st.secrets["credentials"]
+    cred_toml = attrdict_to_dict(st.secrets["credentials"])
     cred_dict = toml.loads(toml.dumps(cred_toml))
     cred = credentials.Certificate(cred_dict)
     firebase_admin.initialize_app(cred)
 
-# Inicializa el cliente de Firestore
 db = firestore.client()
-
-# Ejemplo: Lee datos de una colección llamada "usuarios"
 usuarios_ref = db.collection("usuarios")
 usuarios = usuarios_ref.stream()
 data = []
 
-# Muestra los datos en la aplicación Streamlit
 st.title("Usuarios de Firestore")
 
 for usuario in usuarios:
     usuario_dict = usuario.to_dict()
-    usuario_dict["ID"] = usuario.id
-    data.append(usuario_dict)
+    if "nombre" in usuario_dict and "edad" in usuario_dict: # Example of data validation.
+        usuario_dict["ID"] = usuario.id
+        data.append(usuario_dict)
 
 df_firebase = pd.DataFrame(data)
 st.write("Datos desde Firebase")
