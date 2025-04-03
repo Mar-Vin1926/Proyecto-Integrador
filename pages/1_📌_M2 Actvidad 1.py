@@ -1,4 +1,3 @@
-import io
 import streamlit as st
 import pandas as pd
 import sqlite3
@@ -50,6 +49,7 @@ libros = {
 df_libros = pd.DataFrame(libros)
 st.dataframe(df_libros)
 
+
 def descargar_excel(df, nombre_archivo):
     """Genera un archivo Excel a partir de un DataFrame y crea un botón de descarga."""
     output = io.BytesIO()
@@ -66,7 +66,6 @@ def descargar_excel(df, nombre_archivo):
 st.write("Datos de Libros")
 st.dataframe(df_libros)
 descargar_excel(df_libros, "Libros")
-
 
 
 st.header("Solución")
