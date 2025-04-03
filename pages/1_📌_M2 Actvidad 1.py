@@ -62,7 +62,6 @@ def descargar_excel(df, nombre_archivo):
     )
 
 st.write("Datos de Libros")
-st.dataframe(df_libros)
 descargar_excel(df_libros, "Libros")
 
 
