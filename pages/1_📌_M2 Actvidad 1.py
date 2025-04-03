@@ -110,7 +110,6 @@ def descargar_excel(df, nombre_archivo):
     )
 
     st.write("Datos de Ciudades")
-st.dataframe(df_ciudades)
 descargar_excel(df_ciudades, "Ciudades")
 
 
