@@ -131,13 +131,21 @@ with col2:
     st.markdown('<p style="margin-top: 10px;">Programa: <span style="color: #0066cc; font-weight: bold;">Desarrollo de Software</span></p>', unsafe_allow_html=True)
     st.markdown('<p>Semestre: <span style="color: #0066cc; font-weight: bold;">3er-semestre-2025-1</span></p>', unsafe_allow_html=True)
     st.markdown('<p>Repositorio: <a href="https://github.com/Mar-Vin1926/Proyecto-Integrador.git" target="_blank" style="color: #0066cc; font-weight: bold; text-decoration: none;">GitHub</a></p>', unsafe_allow_html=True)
-   
-
-
-# Pie de página
+    
+# Pie de página con estilos personalizados
 st.markdown("---")
 st.markdown("""
-<div style="text-align: center; color: #666; font-size: 0.8rem;">
-    © 2025 CESDE      
+<style>
+    .footer {
+        background-image: url('assets/Fondo.jpg'); /* Reemplaza con la ruta de tu imagen de fondo */
+        background-size: cover;
+        background-position: center;
+        padding: 20px;
+        color: white; /* Color del texto */
+        text-align: center;
+    }
+</style>
+<div class="footer">
+    © 2025 CESDE 
 </div>
 """, unsafe_allow_html=True)
