@@ -4,7 +4,7 @@ import base64
 # Configuración de la página
 st.set_page_config(
     page_title="Nuevas Tecnologías de Programación",
-    page_icon="💻",
+    page_icon="",
     layout="wide"
 )
 
@@ -131,17 +131,27 @@ with col2:
     st.markdown('<p style="margin-top: 10px;">Programa: <span style="color: #0066cc; font-weight: bold;">Desarrollo de Software</span></p>', unsafe_allow_html=True)
     st.markdown('<p>Semestre: <span style="color: #0066cc; font-weight: bold;">3er-semestre-2025-1</span></p>', unsafe_allow_html=True)
     st.markdown('<p>Repositorio: <a href="https://github.com/Mar-Vin1926/Proyecto-Integrador.git" target="_blank" style="color: #0066cc; font-weight: bold; text-decoration: none;">GitHub</a></p>', unsafe_allow_html=True)
-    
-# Pie de página con estilos personalizados
-st.markdown("---")
-st.markdown("""
+
+# Función para codificar la imagen en base64
+import base64
+
+def get_base64_image(image_path):
+    with open(image_path, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read()).decode()
+    return f"data:image/jpg;base64,{encoded_string}"
+
+image_url = get_base64_image('assets/Fondo.jpg')
+print(f"URL de la imagen base64: {image_url}")  # Imprime la URL para verificar
+
+st.markdown(f"""
 <style>
     .footer {
-        background-image: url('assets/Fondo.jpg'); /* Reemplaza con la ruta de tu imagen de fondo */
+        background-image: url("{image_url}");
+        background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
         padding: 20px;
-        color: white; /* Color del texto */
+        color: white;
         text-align: center;
     }
 </style>
