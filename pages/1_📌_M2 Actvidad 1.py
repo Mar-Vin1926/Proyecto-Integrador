@@ -142,6 +142,21 @@ productos = [
 df_productos = pd.DataFrame(productos, columns=["Producto", "Precio", "Stock"])
 st.dataframe(df_productos)
 
+def descargar_excel(df, nombre_archivo):
+    """Genera un archivo Excel a partir de un DataFrame y crea un botón de descarga."""
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+        df.to_excel(writer, index=False, sheet_name='Sheet1')
+    processed_data = output.getvalue()
+    st.download_button(
+        label=f"Descargar {nombre_archivo}.xlsx",
+        data=processed_data,
+        file_name=f"{nombre_archivo}.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    )
+st.write("Datos de Inventario")
+descargar_excel(df_productos, "Inventario")
+
 st.header("Solución")
 code="""
 productos = [
