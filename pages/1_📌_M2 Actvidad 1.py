@@ -304,6 +304,8 @@ descargar_excel(df_url, "Datos_URL")
 
 st.header("DataFrame desde SQLite")
 
+print(f"Session State al inicio: {st.session_state}") # Imprime el estado
+
 if "data_inserted" not in st.session_state:
     conn = sqlite3.connect("estudiantes.db")
     cursor = conn.cursor()
@@ -312,12 +314,16 @@ if "data_inserted" not in st.session_state:
     conn.commit()
     conn.close()
     st.session_state["data_inserted"] = True
+    print(f"Datos insertados. Session State: {st.session_state}") # Imprime después de insertar
+else:
+    print(f"Datos ya insertados. Session State: {st.session_state}") # Imprime si ya se insertaron
 
 conn = sqlite3.connect("estudiantes.db")
 df_sqlite = pd.read_sql_query("SELECT * FROM estudiantes", conn)
 st.dataframe(df_sqlite)
 conn.close()
 
+print(f"Session State al final: {st.session_state}") # Imprime el estado al final
 def descargar_excel(df, nombre_archivo):
     """Genera un archivo Excel a partir de un DataFrame y crea un botón de descarga."""
     output = io.BytesIO()
