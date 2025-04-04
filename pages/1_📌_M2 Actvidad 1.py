@@ -308,7 +308,7 @@ if "data_inserted" not in st.session_state:
     conn = sqlite3.connect("estudiantes.db")
     cursor = conn.cursor()
     cursor.execute("CREATE TABLE IF NOT EXISTS estudiantes (nombre TEXT, calificacion INTEGER)")
-    cursor.execute("INSERT INTO estudiantes VALUES ('Ana', 90), ('Juan', 85), ('María', 95')")
+    cursor.execute("INSERT INTO estudiantes VALUES ('Ana', 90), ('Juan', 85), ('María', 95)")
     conn.commit()
     conn.close()
     st.session_state["data_inserted"] = True
