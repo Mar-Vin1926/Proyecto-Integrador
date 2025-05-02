@@ -64,20 +64,20 @@ if st.button('Mostrar fila por idice'):
 
 st.markdown('---')
 
-# Filtrado por condicion con .loc 
-st.subheader('Filtrado por condicon (.loc)')
+# Filtrado por condición con .loc 
+st.subheader('Filtrado por condición (.loc)')
 columna_filtro = st.selectbox('Seleccione la columna para filtrar:', df.columns)
 valor_filtro = st.text_input(f'Ingrese el valor para filtrar en la columna {columna_filtro}:')
 if st.button('Filtrar por valor'):
     if valor_filtro:
         try:
             fila_loc = df.loc[df[columna_filtro] == valor_filtro]
-            st.write(f'Filas donde "{columna_fltro}" es igual a "{valor_filtro}" (usando .loc):')
+            st.write(f'Filas donde "{columna_filtro}" es igual a "{valor_filtro}" (usando .loc):')
             st.dataframe(fila_loc)
         except KeyError:
-            st.error(f'La columna "{colmuna_filtro}" no esxiste.')
+            st.error(f'La columna "{columna_filtro}" no existe.')
     else:
-        stwarning('Por favor, ingrese un valor para filtrar.')
+        st.warning('Por favor, ingrese un valor para filtrar.')
 
 st.markdown('---')
 
@@ -144,19 +144,19 @@ if st.button('Mostrar fila por idice'):
 st.markdown('---')
 
 # Filtrado por condicion con .loc 
-st.subheader('Filtrado por condicon (.loc)')
+st.subheader('Filtrado por condición (.loc)')
 columna_filtro = st.selectbox('Seleccione la columna para filtrar:', df.columns)
 valor_filtro = st.text_input(f'Ingrese el valor para filtrar en la columna {columna_filtro}:')
 if st.button('Filtrar por valor'):
     if valor_filtro:
         try:
             fila_loc = df.loc[df[columna_filtro] == valor_filtro]
-            st.write(f'Filas donde "{columna_fltro}" es igual a "{valor_filtro}" (usando .loc):')
+            st.write(f'Filas donde "{columna_filtro}" es igual a "{valor_filtro}" (usando .loc):')
             st.dataframe(fila_loc)
         except KeyError:
-            st.error(f'La columna "{colmuna_filtro}" no esxiste.')
+            st.error(f'La columna "{columna_filtro}" no existe.')
     else:
-        stwarning('Por favor, ingrese un valor para filtrar.')
+        st.warning('Por favor, ingrese un valor para filtrar.')
 
 st.markdown('---')
 
